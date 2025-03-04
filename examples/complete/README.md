@@ -45,4 +45,5 @@ No resources.
 |------|-------------|
 | <a name="output_id"></a> [id](#output\_id) | The Device Provisioning Service Id. |
 | <a name="output_name"></a> [name](#output\_name) | The Device Provisioning Service Name. |
+| <a name="output_resource_group_name"></a> [resource\_group\_name](#output\_resource\_group\_name) | The Resource Group Name. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

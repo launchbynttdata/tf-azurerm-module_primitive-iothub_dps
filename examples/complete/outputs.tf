@@ -19,3 +19,8 @@ output "name" {
   description = "The Device Provisioning Service Name."
   value       = module.device_provisioning_service.name
 }
+
+output "resource_group_name" {
+  description = "The Resource Group Name."
+  value       = module.resource_group.name
+}
