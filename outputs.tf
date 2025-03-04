@@ -17,5 +17,5 @@ output "id" {
 
 output "name" {
   description = "The Device Provisioning Service Name."
-  value       = var.name
+  value       = azurerm_iothub_dps.dps.name
 }
