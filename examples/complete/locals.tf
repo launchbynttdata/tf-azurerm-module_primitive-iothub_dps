@@ -13,4 +13,5 @@
 locals {
   resource_group = module.resource_names["resource_group"].standard
   dps_name       = module.resource_names["device_provisioning_service"].standard
+  iothub_name    = module.resource_names["iothub"].standard
 }

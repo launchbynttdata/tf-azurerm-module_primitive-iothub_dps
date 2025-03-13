@@ -37,16 +37,35 @@ module "resource_names" {
   logical_product_service = var.logical_product_service
 }
 
-module "device_provisioning_service" {
+resource "azurerm_iothub" "iothub" {
+  name                = local.iothub_name
+  resource_group_name = module.resource_group.name
+  location            = var.location
+  sku {
+    name     = "S1"
+    capacity = 1
+  }
+}
 
+module "device_provisioning_service" {
   source = "../.."
 
   name                          = local.dps_name
   location                      = var.location
   resource_group_name           = module.resource_group.name
-  sku_name                      = var.sku_name
-  sku_capacity                  = var.sku_capacity
+  allocation_policy             = var.allocation_policy
+  data_residency_enabled        = var.data_residency_enabled
   public_network_access_enabled = var.public_network_access_enabled
+  sku                           = var.sku
+  # linked_hubs                   = var.linked_hubs
+  linked_hubs = [
+    {
+      connection_string = "HostName=${azurerm_iothub.iothub.hostname};SharedAccessKeyName=${azurerm_iothub.iothub.shared_access_policy[0].key_name};SharedAccessKey=${azurerm_iothub.iothub.shared_access_policy[0].primary_key}"
+      location          = var.location
+    }
+  ]
+  ip_filter_rules = var.ip_filter_rules
+
 
   depends_on = [module.resource_group]
 }
