@@ -11,7 +11,7 @@
 // limitations under the License.
 
 locals {
-  resource_group = module.resource_names["resource_group"].standard
-  dps_name       = module.resource_names["device_provisioning_service"].standard
-  iothub_name    = module.resource_names["iothub"].standard
+  resource_group = module.resource_names["resource_group"].minimal_random_suffix
+  dps_name       = module.resource_names["device_provisioning_service"].minimal_random_suffix
+  iothub_name    = module.resource_names["iothub"].minimal_random_suffix
 }

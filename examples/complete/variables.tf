@@ -56,24 +56,24 @@ variable "sku" {
   }
 }
 
-# variable "linked_hubs" {
-#   description = <<EOF
-#   (Optional) A list of iothub objects linked to the Device Provisioning Service. Defaults to an empty list `[]`.
-#   list(object({
-#     connection_string       = (Required) The connection string to connect to the IoT Hub.
-#     location                = (Required) The location of the IoT hub.
-#     apply_allocation_policy = (Optional) Determines whether to apply allocation policies to the IoT Hub. Defaults to true.
-#     allocation_weight       = (Optional) The weight applied to the IoT Hub. Defaults to 1.
-#   }))
-#   EOF
-#   type = list(object({
-#     connection_string       = string
-#     location                = string
-#     apply_allocation_policy = optional(bool)
-#     allocation_weight       = optional(number)
-#   }))
-#   default = []
-# }
+variable "linked_hubs" {
+  description = <<EOF
+  (Optional) A list of iothub objects linked to the Device Provisioning Service. Defaults to an empty list `[]`.
+  list(object({
+    connection_string       = (Required) The connection string to connect to the IoT Hub.
+    location                = (Required) The location of the IoT hub.
+    apply_allocation_policy = (Optional) Determines whether to apply allocation policies to the IoT Hub. Defaults to true.
+    allocation_weight       = (Optional) The weight applied to the IoT Hub. Defaults to 1.
+  }))
+  EOF
+  type = list(object({
+    connection_string       = string
+    location                = string
+    apply_allocation_policy = optional(bool)
+    allocation_weight       = optional(number)
+  }))
+  default = []
+}
 
 variable "ip_filter_rules" {
   description = <<EOF
@@ -93,12 +93,6 @@ variable "ip_filter_rules" {
   }))
   default = []
 }
-
-# variable "tags" {
-#   type        = map(string)
-#   description = "(Optional) A mapping of tags to assign to the resource."
-#   default     = {}
-# }
 
 //variables required by resource names module
 variable "resource_names_map" {

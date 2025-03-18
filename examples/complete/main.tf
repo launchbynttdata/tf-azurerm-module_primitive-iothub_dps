@@ -45,6 +45,7 @@ resource "azurerm_iothub" "iothub" {
     name     = "S1"
     capacity = 1
   }
+  depends_on = [module.resource_group]
 }
 
 module "device_provisioning_service" {
@@ -57,13 +58,12 @@ module "device_provisioning_service" {
   data_residency_enabled        = var.data_residency_enabled
   public_network_access_enabled = var.public_network_access_enabled
   sku                           = var.sku
-  # linked_hubs                   = var.linked_hubs
-  linked_hubs = [
+  linked_hubs = concat(var.linked_hubs, [
     {
       connection_string = "HostName=${azurerm_iothub.iothub.hostname};SharedAccessKeyName=${azurerm_iothub.iothub.shared_access_policy[0].key_name};SharedAccessKey=${azurerm_iothub.iothub.shared_access_policy[0].primary_key}"
       location          = var.location
     }
-  ]
+  ])
   ip_filter_rules = var.ip_filter_rules
 
 
