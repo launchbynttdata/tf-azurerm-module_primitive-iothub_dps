@@ -148,4 +148,7 @@ No modules.
 |------|-------------|
 | <a name="output_id"></a> [id](#output\_id) | The Device Provisioning Service Id. |
 | <a name="output_name"></a> [name](#output\_name) | The Device Provisioning Service Name. |
+| <a name="output_id_scope"></a> [id\_scope](#output\_id\_scope) | The Device Provisioning Service Id Scope. |
+| <a name="output_device_provisioning_host_name"></a> [device\_provisioning\_host\_name](#output\_device\_provisioning\_host\_name) | The Device Provisioning Service Device Provisioning Host Name. |
+| <a name="output_service_operations_host_name"></a> [service\_operations\_host\_name](#output\_service\_operations\_host\_name) | The Device Provisioning Service Service Operations Host Name. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
