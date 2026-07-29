@@ -38,5 +38,5 @@ func TestDeviceProvisioningServiceModule(t *testing.T) {
 		}).
 		Build()
 
-	lib.RunSetupTestTeardown(t, *ctx, testimpl.TestIothubDps)
+	lib.RunSetupTestTeardown(t, *ctx, testimpl.TestComposableIothubDps)
 }
