@@ -21,6 +21,7 @@
 | Name | Type |
 |------|------|
 | [azurerm_iothub.iothub](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/iothub) | resource |
+| [azurerm_iothub_shared_access_policy.iothubowner](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/iothub_shared_access_policy) | data source |
 
 ## Inputs
 
