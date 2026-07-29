@@ -28,8 +28,8 @@ resource "azurerm_iothub_dps" "dps" {
     content {
       connection_string       = linked_hub.value.connection_string
       location                = linked_hub.value.location
-      apply_allocation_policy = linked_hub.value.apply_allocation_policy
-      allocation_weight       = linked_hub.value.allocation_weight
+      apply_allocation_policy = coalesce(linked_hub.value.apply_allocation_policy, true)
+      allocation_weight       = coalesce(linked_hub.value.allocation_weight, 1)
     }
   }
 

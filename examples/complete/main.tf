@@ -48,6 +48,14 @@ resource "azurerm_iothub" "iothub" {
   depends_on = [module.resource_group]
 }
 
+data "azurerm_iothub_shared_access_policy" "iothubowner" {
+  name                = "iothubowner"
+  resource_group_name = module.resource_group.name
+  iothub_name         = azurerm_iothub.iothub.name
+
+  depends_on = [azurerm_iothub.iothub]
+}
+
 module "device_provisioning_service" {
   source = "../.."
 
@@ -60,12 +68,13 @@ module "device_provisioning_service" {
   sku                           = var.sku
   linked_hubs = concat(var.linked_hubs, [
     {
-      connection_string = "HostName=${azurerm_iothub.iothub.hostname};SharedAccessKeyName=${azurerm_iothub.iothub.shared_access_policy[0].key_name};SharedAccessKey=${azurerm_iothub.iothub.shared_access_policy[0].primary_key}"
-      location          = var.location
+      connection_string       = data.azurerm_iothub_shared_access_policy.iothubowner.primary_connection_string
+      location                = azurerm_iothub.iothub.location
+      apply_allocation_policy = true
+      allocation_weight       = 1
     }
   ])
   ip_filter_rules = var.ip_filter_rules
 
-
-  depends_on = [module.resource_group]
+  depends_on = [azurerm_iothub.iothub, module.resource_group]
 }
