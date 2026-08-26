@@ -41,9 +41,9 @@ func TestComposableIothubDps(t *testing.T, ctx types.TestContext) {
 	}
 
 	t.Run("CheckDeviceProvisioningServiceId", func(t *testing.T) {
-		resourceGroupName := terraform.Output(t, ctx.TerratestTerraformOptions(), "resource_group_name")
-		dpsName := terraform.Output(t, ctx.TerratestTerraformOptions(), "name")
-		dpsId := terraform.Output(t, ctx.TerratestTerraformOptions(), "id")
+		resourceGroupName := terraform.OutputContext(t, context.Background(), ctx.TerratestTerraformOptions(), "resource_group_name")
+		dpsName := terraform.OutputContext(t, context.Background(), ctx.TerratestTerraformOptions(), "name")
+		dpsId := terraform.OutputContext(t, context.Background(), ctx.TerratestTerraformOptions(), "id")
 
 		res, err := clientFactory.NewIotDpsResourceClient().Get(context.Background(), dpsName, resourceGroupName, nil)
 		if err != nil {
