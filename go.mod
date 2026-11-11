@@ -5,7 +5,7 @@ go 1.26.0
 require (
 	github.com/Azure/azure-sdk-for-go/sdk/azcore v1.23.3
 	github.com/Azure/azure-sdk-for-go/sdk/azidentity v1.15.0
-	github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/deviceprovisioningservices/armdeviceprovisioningservices v1.3.0
+	github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/deviceprovisioningservices/armdeviceprovisioningservices v1.4.0
 	github.com/gruntwork-io/terratest v1.0.1
 	github.com/launchbynttdata/lcaf-component-terratest v1.0.4
 	github.com/stretchr/testify v1.12.1
